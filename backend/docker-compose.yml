@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  app:
+    container_name: to-do-backend
+    build: .
+    volumes:
+      - ./src:/to-do
+    ports:
+      - "9004:9004"
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 9004
