@@ -1,3 +1,3 @@
 FROM python:3.9
-WORKDIR /to-do
+WORKDIR /backend
 RUN pip install fastapi uvicorn
