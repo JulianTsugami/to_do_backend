@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-import backend.items.models as models
-import backend.items.schemas as schemas
+import to_do.items.models as models
+import to_do.items.schemas as schemas
 
 
 def get_items(db: Session, skip: int = 0, limit: int = 100):

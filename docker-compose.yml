@@ -1,20 +1,20 @@
 version: '3.10'
 services:
   app:
-    container_name: to-do-backend
+    container_name: fastapi
     build: .
     volumes:
-      - .:/backend
+      - .:/to_do
     ports:
       - "9004:9004"
     depends_on:
       - db
-    command: uvicorn backend.main:app --reload --host 0.0.0.0 --port 9004
+    command: uvicorn to_do.main:app --reload --host 0.0.0.0 --port 9004
     env_file:
       - ./.env
     restart: always
   db:
-    container_name: to-do-db
+    container_name: postgresql
     image: postgres:14-alpine
     env_file:
       - ./.env
