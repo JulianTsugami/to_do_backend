@@ -20,6 +20,15 @@ def create_item(db: Session, item: schemas.ItemCreate):
     return db_item
 
 
+def update_item(db: Session, item_id: int, item: schemas.Item):
+    item_obj = get_item(db, item_id)
+    if item_obj is not None:
+        item_obj.note = item.note
+        db.commit()
+        db.refresh(item_obj)
+    return item_obj
+
+
 def delete_item(db: Session, item_id: int):
     item_obj = get_item(db, item_id)
     if item_obj is not None:

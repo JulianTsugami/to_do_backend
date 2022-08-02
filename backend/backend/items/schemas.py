@@ -11,3 +11,6 @@ class Item(BaseModel):
 
 class ItemCreate(BaseModel):
     note: str
+
+class ItemUpdate(BaseModel):
+    note: str
