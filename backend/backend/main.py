@@ -26,6 +26,16 @@ def get_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_items(db, skip=skip, limit=limit)
 
 
-@app.post("/items/create", response_model=schemas.Item)
+@app.get("/item/{item_id}", response_model=schemas.Item)
+def get_item(item_id: int, db: Session = Depends(get_db)):
+    return crud.get_item(db, item_id=item_id)
+
+
+@app.post("/item/create", response_model=schemas.Item)
 def create_item(item: schemas.ItemCreate, db: Session = Depends(get_db)):
     return crud.create_item(db=db, item=item)
+
+
+@app.delete("/item/{item_id}")
+def delete_item(item_id: int, db: Session = Depends(get_db)):
+    return crud.delete_item(db=db, item_id=item_id)
